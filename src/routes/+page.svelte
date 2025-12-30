@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Tentang Web B</title>
+	<title>HOME</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
@@ -18,7 +18,7 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		to your new<br />PORTOFOLIO
 	</h1>
 
 	<h2>
