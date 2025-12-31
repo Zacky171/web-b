@@ -1,56 +1,34 @@
 <script>
-	import Header from './Header.svelte';
-	import './layout.css';
+    import Footer from "../components/Footer.svelte";
+    import Header from "../components/Header.svelte";
+    import "../app.css";
+    let y;
+    let innerWidth = 0;
+    let innerHeight = 0;
 
-	/** @type {{children: import('svelte').Snippet}} */
-	let { children } = $props();
+    function goTop() {
+        document.body.scrollIntoView();
+    }
 </script>
 
-<div class="app">
-	<Header />
-	<main>{@render children()}</main>
-	<footer>
-		<p>
-			visit 
-			<a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a>
-			to learn about SvelteKit
-		</p>
-	</footer>
+<div
+    class="container relative flex flex-col max-w-[1400px] mx-auto w-full text-sm sm:text-base min-h-screen"
+>
+    <div
+        class={"fixed bottom-0 w-full duration-200 flex p-10 z-[10] " +
+            (y > 0
+                ? " opacity-full pointer-events-auto"
+                : " pointer-events-none opacity-0")}
+    >
+        <button
+            on:click={goTop}
+            class="ml-auto rounded-full bg-slate-900 text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer aspect-square grid place-items-center"
+        >
+            <i class="fa-solid fa-arrow-up" />
+        </button>
+    </div>
+    <Header {y} {innerHeight}/>
+    <slot />
+    <Footer />
 </div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
+<svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />
