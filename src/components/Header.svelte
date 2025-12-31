@@ -1,23 +1,36 @@
+<!-- Header.svelte -->
 <script>
     export let y;
+    export let tabs = [
+        { name: "About me", link: "#about" },
+        { name: "Certification", link: "#certification" }, 
+        { name: "Projects", link: "#projects" },
+        { name: "Blog", link: "https://github.com/Zacky171" },
+    ];
 
     let isMenuOpen = false;
 
-    function scrollToProjects() {
-        const projectsSection = document.getElementById('projects');
-        if (projectsSection) {
-            projectsSection.scrollIntoView({ behavior: 'smooth' });
+    function scrollToContact() {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
         }
     }
 
-    export let tabs = [
-        { name: "Projects ", link: "#projects" },
-        { name: "About me", link: "#about" },
-        { name: "Blog", link: "https://github.com/Zacky171" },
-        // { name: "Contact", link: "" },
-        // {name: '', link: ''},
+    function scrollToCertification() {
+        const certificationSection = document.getElementById('certification');
+        if (certificationSection) {
+            certificationSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
-    ];
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    function closeMenu() {
+        isMenuOpen = false;
+    }
 </script>
 
 <header
@@ -32,29 +45,38 @@
     <!-- Desktop Navigation -->
     <div class="sm:flex items-center gap-4 hidden">
         {#each tabs as tab, index}
-            <a
-                href={tab.link}
-                class="duration-200 hover:text-violet-400"
-                target={index === 2 ? "_blank" : ""}
-            >
-                <p>{tab.name}</p>
-            </a>
+            {#if index === 1}  
+                <button
+                    on:click={scrollToCertification}
+                    class="duration-200 hover:text-violet-400"
+                >
+                    <p>{tab.name}</p>
+                </button>
+            {:else}
+                <a
+                    href={tab.link}
+                    class="duration-200 hover:text-violet-400"
+                    target={index === 3 ? "_blank" : ""}
+                >
+                    <p>{tab.name}</p>
+                </a>
+            {/if}
         {/each}
 
         <button
-            on:click={scrollToProjects}
+            on:click={scrollToContact}
             class="blueShadow relative overflow-hidden px-5 py-2 group rounded-full bg-white text-slate-950"
         >
             <div
                 class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
             />
-            <h4 class="relative z-9">Get in touch</h4>
+            <h4 class="relative z-9">Contact</h4>
         </button>
     </div>
     <!-- Mobile Menu Button -->
     <button
         class="sm:hidden text-white"
-        on:click={() => isMenuOpen = !isMenuOpen}
+        on:click={toggleMenu}
     >
         <i class="fa-solid fa-bars"></i>
     </button>
@@ -64,27 +86,36 @@
 {#if isMenuOpen}
     <div class="sm:hidden fixed top-0 left-0 w-full h-full bg-slate-950 bg-opacity-95 z-50 flex flex-col items-center justify-center gap-8">
         {#each tabs as tab, index}
-            <a
-                href={tab.link}
-                class="text-white text-xl duration-200 hover:text-violet-400"
-                target={index === 2 ? "_blank" : ""}
-                on:click={() => isMenuOpen = false}
-            >
-                {tab.name}
-            </a>
+            {#if index === 1}  
+                <button
+                    on:click={() => { scrollToCertification(); closeMenu(); }}
+                    class="text-white text-xl duration-200 hover:text-violet-400"
+                >
+                    {tab.name}
+                </button>
+            {:else}
+                <a
+                    href={tab.link}
+                    class="text-white text-xl duration-200 hover:text-violet-400"
+                    target={index === 3 ? "_blank" : ""}
+                    on:click={closeMenu}
+                >
+                    {tab.name}
+                </a>
+            {/if}
         {/each}
         <button
-            on:click={() => { scrollToProjects(); isMenuOpen = false; }}
+            on:click={() => { scrollToContact(); closeMenu(); }}
             class="blueShadow relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950"
         >
             <div
                 class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
             />
-            <h4 class="relative z-9">Get in touch</h4>
+            <h4 class="relative z-9">Contact</h4>
         </button>
         <button
             class="text-white text-2xl mt-8"
-            on:click={() => isMenuOpen = false}
+            on:click={closeMenu}
         >
             <i class="fa-solid fa-times"></i>
         </button>

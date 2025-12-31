@@ -49,27 +49,31 @@
     ];
 
     let certifications = [
-    {
-        name: "AI",
-        icon: "fa-solid fa-brain",  
-        image: "images/belajar_ai.png",
-    },
-    {
-        name: "Pemograman Web",
-        icon: "fa-solid fa-code",  
-        image: "images/pemograman_web.png",
-    },
-    {
-        name: "JavaScript",
-        icon: "fa-brands fa-js",  
-        image: "images/java_script.png",
-    },
-    {
-        name: "Front-End Web",
-        icon: "fa-solid fa-desktop",  
-        image: "images/front_end.png",
-    },
-];
+        {
+            name: "AI",
+            icon: "fa-solid fa-brain",  
+            image: "/images/belajar_ai.png",
+            link: "https://www.dicoding.com/certificates/6RPNG4VR8Z2M",  
+        },
+        {
+            name: "Pemograman Web",
+            icon: "fa-solid fa-code",  
+            image: "/images/pemograman_web.png",
+            link: "https://www.dicoding.com/certificates/2VX3545JJPYQ",
+        },
+        {
+            name: "JavaScript",
+            icon: "fa-brands fa-js",  
+            image: "/images/java_script.png",
+            link: "https://www.dicoding.com/certificates/98XWOOMY9ZM3",
+        },
+        {
+            name: "Front-End Web",
+            icon: "fa-solid fa-desktop",  
+            image: "/images/front_end.png",
+            link: "https://www.dicoding.com/certificates/EYX4KMV86PDL",
+        },
+    ];
 </script>
 
 <main class="flex flex-col flex-1 p-4">
@@ -101,71 +105,12 @@
         </div>
         <div class="relative shadow-2xl grid place-items-center">
             <img
-                src={"images/profile.png"}
+                src="/images/profile.png"
                 alt="M Muzacky Riswanda"
                 class="object-cover z-[2] max-h-[70vh]"
             />
         </div>
-        <!-- <div  class="flex p-0.5 relative max-w-[700px] w-full mx-auto">
-            <div
-                class="absolute inset-0 overflow-hidden rounded-md flex items-center justify-center"
-            >
-                <div
-                    class="bg-gradient-to-r absolute inset-[-20px]  from-violet-800 to-indigo-800 specialSpin"
-                />
-            </div>
-
-            <img
-                src={"images/zetane-engine.jpeg"}
-                alt="Zetane Engine"
-                class="w-full h-full object-cover z-[2]"
-            />
-        </div> -->
         
-    </section>
-    <section class="py-20 lg:py-32 flex flex-col gap-24" id="projects">
-        <div class="flex flex-col gap-2 text-center">
-            <h6 class="text-large sm:text-xl md:text-2xl">
-                A few of my creative endeavors.
-            </h6>
-            <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-                Curious to <span class="poppins text-violet-400">see</span> my work?
-            </h3>
-        </div>
-        <a
-            href="https://github.com/Zacky171"
-            target="_blank"
-            class="mx-auto px-4 py-2 rounded-md border border-solid border-white flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200"
-        >
-            <i class="fa-regular fa-circle-play" />
-            <p>see my work here</p>
-        </a>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
-            <Step step={steps[0]}>
-                <p> <strong
-                        class="text-violet-400"
-                        >HTML (HyperText Markup Language) adalah</strong
-                    > berfungsi sebagai kerangka dasar yang memberitahu browser bagaimana menampilkan teks, gambar, video, dan elemen lain dan bekerja bersama CSS (untuk gaya) dan JavaScript (untuk interaktivitas) untuk membangun website yang kaya dan interaktif. 
-
-                </p>
-            </Step>
-            <Step step={steps[1]}>
-                <p><strong
-                        class="text-violet-400">CSS (Cascading Style Sheets) adalah</strong
-                    >,
-                    
-                    
-                     bahasa stylesheet untuk mendesain tampilan website, mengatur warna, font, tata letak, dan elemen visual lainnya agar lebih menarik, serta memisahkan konten (HTML) dari presentasinya, menjadikannya lebih praktis, konsisten, dan responsif di berbagai perangkat.
-                </p>
-            </Step>
-            <Step step={steps[2]}>
-                <p><strong class="text-violet-400"
-                        >JavaScript (JS) adalah</strong
-                    >  
-                    bahasa pemrograman yang digunakan untuk membuat website interaktif dan dinamis, memungkinkan pengguna untuk berinteraksi dengan elemen-elemen halaman web secara langsung, seperti mengubah tampilan, menangani input pengguna, dan memanipulasi konten secara real-time.
-                </p>
-            </Step>
-        </div>
     </section>
     <section
         id="about"
@@ -203,31 +148,77 @@
                 </div>
             {/each}
         </div>
-        <h5 class={" text-2xl sm:text-3xl font-semibold text-center poppins "}>
-            My <span class="text-violet-400">Certification</span> Course
-        </h5>
-        <div class="flex flex-col gap-10 max-w-[800px] mx-auto w-full">
+        <h5 class="text-2xl sm:text-3xl font-semibold text-center poppins" id="certification" >
+         My <span class="text-violet-400">Certification</span> Course
+            </h5>
+        <!-- Responsive Certification Carousel -->
+        <div class="flex flex-col gap-10 max-w-[800px] mx-auto w-full -mt-2 sm:-mt-4 md:-mt-6"> 
             <div class="overflow-hidden relative">
-                <div class="flex animate-slide-continuous">
+                <div class="flex animate-slide-continuous gap-4 sm:gap-6 md:gap-8"> 
                     {#each certifications as cert}
-                        <div class="flex-shrink-0 flex flex-col items-center gap-4 p-4 bg-white text-slate-700 rounded-lg shadow-md mx-2 min-w-[200px]">
-                            <i class="{cert.icon} text-4xl text-violet-400"></i>
-                            <h4 class="text-lg font-semibold text-center">{cert.name}</h4>
-                        </div>
+                        <a href={cert.link} target="_blank" rel="noopener noreferrer" class="flex-shrink-0 flex flex-col items-center gap-4 p-4 text-white rounded-lg mx-2 min-w-[200px] sm:min-w-[250px] md:min-w-[300px] hover:bg-slate-700 transition-colors duration-200 cursor-pointer">
+                            <img src={cert.image} alt={cert.name} class="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg" />
+                            <h4 class="text-lg sm:text-xl font-semibold text-center">{cert.name}</h4>
+                        </a>
                     {/each}
+                    <!-- Duplicate for seamless loop -->
                     {#each certifications as cert}
-                        <div class="flex-shrink-0 flex flex-col items-center gap-4 p-4 bg-white text-slate-700 rounded-lg shadow-md mx-2 min-w-[200px]">
-                            <i class="{cert.icon} text-4xl text-violet-400"></i>
-                            <h4 class="text-lg font-semibold text-center">{cert.name}</h4>
-                        </div>
+                        <a href={cert.link} target="_blank" rel="noopener noreferrer" class="flex-shrink-0 flex flex-col items-center gap-4 p-4 text-white rounded-lg mx-2 min-w-[200px] sm:min-w-[250px] md:min-w-[300px] hover:bg-slate-700 transition-colors duration-200 cursor-pointer">
+                            <img src={cert.image} alt={cert.name} class="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg" />
+                            <h4 class="text-lg sm:text-xl font-semibold text-center">{cert.name}</h4>
+                        </a>
                     {/each}
                 </div>
             </div>
         </div>
-        <div class="mx-auto -mt-12 italic sm:hidden opacity-50">
+        <div class="mx-auto -mt-8 sm:-mt-12 italic sm:hidden opacity-50">
             <p>Scroll to see more &rarr;</p>
         </div>
         <p class="mx-auto">So why not invest?</p>
+    </section>
+    <section class="py-20 lg:py-32 flex flex-col gap-24" id="projects">
+        <div class="flex flex-col gap-2 text-center">
+            <h6 class="text-large sm:text-xl md:text-2xl">
+                A few of my creative endeavors.
+            </h6>
+            <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
+                Curious to <span class="poppins text-violet-400">see</span> my work?
+            </h3>
+        </div>
+        <a
+            href="https://github.com/Zacky171"
+            target="_blank"
+            class="mx-auto px-4 py-2 rounded-md border border-solid border-white flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200"
+        >
+            <i class="fa-solid fa-briefcase" />
+            <p>see my work here</p>
+        </a>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
+            <Step step={steps[0]}>
+                <p> <strong
+                        class="text-violet-400"
+                        >HTML (HyperText Markup Language) adalah</strong
+                    > berfungsi sebagai kerangka dasar yang memberitahu browser bagaimana menampilkan teks, gambar, video, dan elemen lain dan bekerja bersama CSS (untuk gaya) dan JavaScript (untuk interaktivitas) untuk membangun website yang kaya dan interaktif. 
+
+                </p>
+            </Step>
+            <Step step={steps[1]}>
+                <p><strong
+                        class="text-violet-400">CSS (Cascading Style Sheets) adalah</strong
+                    >,
+                    
+                    
+                     bahasa stylesheet untuk mendesain tampilan website, mengatur warna, font, tata letak, dan elemen visual lainnya agar lebih menarik, serta memisahkan konten (HTML) dari presentasinya, menjadikannya lebih praktis, konsisten, dan responsif di berbagai perangkat.
+                </p>
+            </Step>
+            <Step step={steps[2]}>
+                <p><strong class="text-violet-400"
+                        >JavaScript (JS) adalah</strong
+                    >  
+                    bahasa pemrograman yang digunakan untuk membuat website interaktif dan dinamis, memungkinkan pengguna untuk berinteraksi dengan elemen-elemen halaman web secara langsung, seperti mengubah tampilan, menangani input pengguna, dan memanipulasi konten secara real-time.
+                </p>
+            </Step>
+        </div>
     </section>
 </main>
 
