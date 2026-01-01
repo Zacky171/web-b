@@ -151,7 +151,7 @@
         <h5 class="text-2xl sm:text-3xl font-semibold text-center poppins" id="certification" >
          My <span class="text-violet-400">Certification</span> Course
             </h5>
-        <!-- Responsive Certification Carousel -->
+
         <div class="flex flex-col gap-10 max-w-[800px] mx-auto w-full -mt-2 sm:-mt-4 md:-mt-6"> 
             <div class="overflow-hidden relative">
                 <div class="flex animate-slide-continuous gap-4 sm:gap-6 md:gap-8"> 
@@ -161,7 +161,6 @@
                             <h4 class="text-lg sm:text-xl font-semibold text-center">{cert.name}</h4>
                         </a>
                     {/each}
-                    <!-- Duplicate for seamless loop -->
                     {#each certifications as cert}
                         <a href={cert.link} target="_blank" rel="noopener noreferrer" class="flex-shrink-0 flex flex-col items-center gap-4 p-4 text-white rounded-lg mx-2 min-w-[200px] sm:min-w-[250px] md:min-w-[300px] hover:bg-slate-700 transition-colors duration-200 cursor-pointer">
                             <img src={cert.image} alt={cert.name} class="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg" />
