@@ -1,6 +1,5 @@
 name = "web-b"
 compatibility_date = "2026-01-01"
-main = ".svelte-kit/output/server/index.js"
 
 [assets]
 directory = ".svelte-kit/output/client"
