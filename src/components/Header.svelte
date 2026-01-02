@@ -1,11 +1,10 @@
-<!-- Header.svelte -->
 <script>
     export let y;
     export let tabs = [
+        { name: "Home", link: "#home" },
         { name: "About me", link: "#about" },
-        { name: "Certification", link: "#certification" }, 
-        { name: "Projects", link: "#projects" },
-        { name: "Blog", link: "https://github.com/Zacky171" },
+        { name: "Certification", link: "#Certification" }, 
+        { name: "Journey", link: "#journey" },
     ];
 
     let isMenuOpen = false;
@@ -45,7 +44,7 @@
     <!-- Desktop Navigation -->
     <div class="sm:flex items-center gap-4 hidden">
         {#each tabs as tab, index}
-            {#if index === 1}  
+            {#if index === 2}  
                 <button
                     on:click={scrollToCertification}
                     class="duration-200 hover:text-violet-400"
@@ -56,7 +55,6 @@
                 <a
                     href={tab.link}
                     class="duration-200 hover:text-violet-400"
-                    target={index === 3 ? "_blank" : ""}
                 >
                     <p>{tab.name}</p>
                 </a>
@@ -73,7 +71,6 @@
             <h4 class="relative z-9">Contact</h4>
         </button>
     </div>
-    <!-- Mobile Menu Button -->
     <button
         class="sm:hidden text-white"
         on:click={toggleMenu}
@@ -82,11 +79,10 @@
     </button>
 </header>
 
-<!-- Mobile Menu -->
 {#if isMenuOpen}
     <div class="sm:hidden fixed top-0 left-0 w-full h-full bg-slate-950 bg-opacity-95 z-50 flex flex-col items-center justify-center gap-8">
         {#each tabs as tab, index}
-            {#if index === 1}  
+            {#if index === 2}  
                 <button
                     on:click={() => { scrollToCertification(); closeMenu(); }}
                     class="text-white text-xl duration-200 hover:text-violet-400"
@@ -97,7 +93,6 @@
                 <a
                     href={tab.link}
                     class="text-white text-xl duration-200 hover:text-violet-400"
-                    target={index === 3 ? "_blank" : ""}
                     on:click={closeMenu}
                 >
                     {tab.name}
